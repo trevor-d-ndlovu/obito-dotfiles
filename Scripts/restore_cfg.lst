@@ -1,0 +1,24 @@
+# overwrite|backup|target directory|repo-relative path|dependencies
+Y|Y|${HOME}|.gitconfig|git
+Y|Y|${HOME}|.zshrc|zsh
+Y|Y|${HOME}|.tmux.conf|tmux
+Y|Y|${HOME}/.config/Code - OSS/User|.config/Code - OSS/User/settings.json|code
+Y|Y|${HOME}/.config|.config/hypr|hyprland
+Y|Y|${HOME}/.config|.config/waybar|waybar
+Y|Y|${HOME}/.config|.config/rofi|rofi-wayland
+Y|Y|${HOME}/.config|.config/kitty|kitty
+Y|Y|${HOME}/.config|.config/dunst|dunst
+Y|Y|${HOME}/.config|.config/gtk-3.0|
+Y|Y|${HOME}/.config|.config/gtk-4.0|
+Y|Y|${HOME}/.config|.config/Kvantum|kvantum
+Y|Y|${HOME}/.config|.config/qt5ct|qt5ct
+Y|Y|${HOME}/.config|.config/qt6ct|qt6ct
+Y|Y|${HOME}/.config|.config/swirlface|hyprland
+Y|Y|${HOME}/.config|.config/wlogout|wlogout
+Y|Y|${HOME}/.config|.config/swaylock|swaylock
+Y|Y|${HOME}/.config|.config/fastfetch|fastfetch
+Y|Y|${HOME}/.config|.config/swappy|swappy
+Y|Y|${HOME}/.local/share|.local/share/bin|hyprland
+Y|Y|${HOME}/.local/share|.local/share/swirlface|hyprland
+Y|Y|${HOME}|.themes|
+Y|Y|${HOME}|.icons|

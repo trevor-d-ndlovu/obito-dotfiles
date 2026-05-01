@@ -1,6 +1,6 @@
 # obito-dotfiles
 
-Personal shell, Git, tmux, Code - OSS, Hyprland, Waybar, and theme config.
+Personal shell, Git, tmux, Code - OSS, Hyprland, Waybar, and Swirlface desktop config.
 
 ## Files
 
@@ -30,34 +30,37 @@ Personal shell, Git, tmux, Code - OSS, Hyprland, Waybar, and theme config.
 
 ## Install
 
-On a fresh Arch install, clone this repo and run the bootstrap:
+On a fresh Arch install, clone this repo and run the installer:
 
 ```bash
 git clone https://github.com/trevor-d-ndlovu/obito-dotfiles.git
 cd obito-dotfiles
-./bootstrap-arch.sh
-```
-
-The bootstrap:
-
-- installs Arch packages used by the configs
-- installs selected AUR packages through `yay`
-- runs `install.sh`
-- changes the default shell to `zsh`
-
-If the packages are already installed, or you only want to relink the config files, run:
-
-```bash
 ./install.sh
 ```
 
-The installer:
+The installer works like the old Hyprdots flow:
 
-- backs up existing target files with a timestamped `.bak.*` suffix
-- creates parent directories as needed
-- symlinks the tracked files into `$HOME`
+- installs Arch packages used by the configs
+- installs selected AUR packages through `yay`
+- restores the tracked config files into `$HOME`
+- backs up replaced files under `~/.config/cfg_backups`
+- enables desktop services listed in `Scripts/system_ctl.lst`
+- changes the default shell to `zsh`
+
+Useful modes:
+
+```bash
+./install.sh        # install packages, restore configs, enable services
+./install.sh -d     # same as default, but uses --noconfirm
+./install.sh -i     # install packages only
+./install.sh -r     # restore configs only
+./install.sh -s     # enable services only
+./install.sh Scripts/custom_apps.lst
+```
+
+Add extra packages to `Scripts/custom_apps.lst`, or pass another package list as the first argument.
 
 ## Notes
 
-- The bootstrap installs the common dependencies, but a few hardware-specific packages may still need manual setup, especially GPU, Wi-Fi, Bluetooth, or laptop power-management packages.
+- The installer installs common dependencies, but a few hardware-specific packages may still need manual setup, especially GPU, Wi-Fi, Bluetooth, or laptop power-management packages.
 - The repo includes the full local icon collection and Swirlface theme bundle, so cloning can take a while.
