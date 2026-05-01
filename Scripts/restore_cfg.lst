@@ -5,7 +5,7 @@ Y|Y|${HOME}|.tmux.conf|tmux
 Y|Y|${HOME}/.config/Code - OSS/User|.config/Code - OSS/User/settings.json|code
 Y|Y|${HOME}/.config|.config/hypr|hyprland
 Y|Y|${HOME}/.config|.config/waybar|waybar
-Y|Y|${HOME}/.config|.config/rofi|rofi-wayland
+Y|Y|${HOME}/.config|.config/rofi|rofi
 Y|Y|${HOME}/.config|.config/kitty|kitty
 Y|Y|${HOME}/.config|.config/dunst|dunst
 Y|Y|${HOME}/.config|.config/gtk-3.0|
