@@ -23,10 +23,28 @@ Personal shell, Git, tmux, Code - OSS, Hyprland, Waybar, and theme config.
 - `.config/swaylock`
 - `.config/fastfetch`
 - `.config/swappy`
+- `.local/share/bin`
 - `.themes`
 - `.icons`
 
 ## Install
+
+On a fresh Arch install, clone this repo and run the bootstrap:
+
+```bash
+git clone https://github.com/trevor-d-ndlovu/obito-dotfiles.git
+cd obito-dotfiles
+./bootstrap-arch.sh
+```
+
+The bootstrap:
+
+- installs Arch packages used by the configs
+- installs selected AUR packages through `yay`
+- runs `install.sh`
+- changes the default shell to `zsh`
+
+If the packages are already installed, or you only want to relink the config files, run:
 
 ```bash
 ./install.sh
@@ -40,5 +58,5 @@ The installer:
 
 ## Notes
 
-- Some tools referenced by these configs are expected to be installed separately, including `delta`, `atuin`, `direnv`, `gh`, `zoxide`, `tmux`, `eza`, `bat`, `fd`, `fzf`, `hyprland`, `waybar`, `rofi`, `kitty`, `dunst`, `wlogout`, `swaylock`, and `fastfetch`.
-- The repo includes the current GTK themes, the current icon/cursor themes, and the active HyDE theme. The full local icon collection and inactive HyDE theme bundle are intentionally not tracked because they are large.
+- The bootstrap installs the common dependencies, but a few hardware-specific packages may still need manual setup, especially GPU, Wi-Fi, Bluetooth, or laptop power-management packages.
+- The repo includes the full local icon collection and HyDE theme bundle, so cloning can take a while.
