@@ -47,13 +47,13 @@ get_themes
 
 rofiSel=$(for i in ${!thmList[@]} ; do
     echo -en "${thmList[i]}\x00icon\x1f${thmbDir}/$(set_hash "${thmWall[i]}").${thmbExtn}\n"
-done | rofi -dmenu -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${hydeTheme}")
+done | rofi -dmenu -theme-str "${r_scale}" -theme-str "${r_override}" -config "${rofiConf}" -select "${swirlfaceTheme}")
 
 
 #// apply theme
 
 if [ ! -z "${rofiSel}" ] ; then
     "${scrDir}/themeswitch.sh" -s "${rofiSel}"
-    notify-send -a "t1" -i "$HOME/.config/dunst/icons/hyprdots.png" " ${rofiSel}"
+    notify-send -a "t1" -i "$HOME/.config/dunst/icons/swirlface.png" " ${rofiSel}"
 fi
 

@@ -8,7 +8,7 @@ source "${scrDir}/globalcontrol.sh"
 export thmbDir
 export dcolDir
 
-[ -d "${hydeThemeDir}" ] && cacheIn="${hydeThemeDir}" || exit 1
+[ -d "${swirlfaceThemeDir}" ] && cacheIn="${swirlfaceThemeDir}" || exit 1
 [ -d "${thmbDir}" ] || mkdir -p "${thmbDir}"
 [ -d "${dcolDir}" ] || mkdir -p "${dcolDir}"
 [ -d "${cacheDir}/landing" ] || mkdir -p "${cacheDir}/landing"
@@ -61,14 +61,14 @@ while getopts "w:t:f" option ; do
         cacheIn="${OPTARG}"
         ;;
     t ) # generate cache for input theme
-        cacheIn="$(dirname "${hydeThemeDir}")/${OPTARG}"
+        cacheIn="$(dirname "${swirlfaceThemeDir}")/${OPTARG}"
         if [ ! -d "${cacheIn}" ] ; then
             echo "Error: Input theme \"${OPTARG}\" not found!"
             exit 1
         fi
         ;;
     f ) # full cache rebuild
-        cacheIn="$(dirname "${hydeThemeDir}")"
+        cacheIn="$(dirname "${swirlfaceThemeDir}")"
         mode="_force"
         ;;
     * ) # invalid option

@@ -77,8 +77,8 @@ if [ $i_size -lt 12 ] ; then
 fi
 
 export i_theme="$(
-{ grep -q "^[[:space:]]*\$ICON[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$ICON[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||
-grep 'gsettings set org.gnome.desktop.interface icon-theme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}'
+{ grep -q "^[[:space:]]*\$ICON[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" && grep "^[[:space:]]*\$ICON[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||
+grep 'gsettings set org.gnome.desktop.interface icon-theme' "${swirlfaceThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}'
 )"
 export i_task=$(( w_height*6/10 ))
 if [ $i_task -lt 16 ] ; then

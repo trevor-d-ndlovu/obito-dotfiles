@@ -5,7 +5,7 @@
 
 scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/globalcontrol.sh"
-[ -z "${hydeTheme}" ] && echo "ERROR: unable to detect theme" && exit 1
+[ -z "${swirlfaceTheme}" ] && echo "ERROR: unable to detect theme" && exit 1
 get_themes
 
 
@@ -15,7 +15,7 @@ Theme_Change()
 {
     local x_switch=$1
     for i in ${!thmList[@]} ; do
-        if [ "${thmList[i]}" == "${hydeTheme}" ] ; then
+        if [ "${thmList[i]}" == "${swirlfaceTheme}" ] ; then
             if [ "${x_switch}" == 'n' ] ; then
                 setIndex=$(( (i + 1) % ${#thmList[@]} ))
             elif [ "${x_switch}" == 'p' ] ; then
@@ -58,10 +58,10 @@ done
 #// update control file
 
 if ! $(echo "${thmList[@]}" | grep -wq "${themeSet}") ; then
-    themeSet="${hydeTheme}"
+    themeSet="${swirlfaceTheme}"
 fi
 
-set_conf "hydeTheme" "${themeSet}"
+set_conf "swirlfaceTheme" "${themeSet}"
 echo ":: applying theme :: \"${themeSet}\""
 export reload_flag=1
 source "${scrDir}/globalcontrol.sh"
@@ -69,15 +69,15 @@ source "${scrDir}/globalcontrol.sh"
 
 #// hypr
 [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ] &&  hyprctl keyword misc:disable_autoreload 1 -q
-sed '1d' "${hydeThemeDir}/hypr.theme" > "${confDir}/hypr/themes/theme.conf" # Useless and already handled by swwwallbash.sh but kept for robustness
+sed '1d' "${swirlfaceThemeDir}/hypr.theme" > "${confDir}/hypr/themes/theme.conf" # Useless and already handled by swwwallbash.sh but kept for robustness
 gtkTheme="$(
-{ grep -q "^[[:space:]]*\$GTK[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$GTK[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
-grep 'gsettings set org.gnome.desktop.interface gtk-theme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}'
+{ grep -q "^[[:space:]]*\$GTK[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" && grep "^[[:space:]]*\$GTK[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
+grep 'gsettings set org.gnome.desktop.interface gtk-theme' "${swirlfaceThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}'
 )"
 
 gtkIcon="$(
-{ grep -q "^[[:space:]]*\$ICON[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$ICON[-_]THEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||  
-grep 'gsettings set org.gnome.desktop.interface icon-theme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $(NF - 1)}'
+{ grep -q "^[[:space:]]*\$ICON[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" && grep "^[[:space:]]*\$ICON[-_]THEME\s*=" "${swirlfaceThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} ||  
+grep 'gsettings set org.gnome.desktop.interface icon-theme' "${swirlfaceThemeDir}/hypr.theme" | awk -F "'" '{print $(NF - 1)}'
 )"
 
 #// qtct
@@ -117,5 +117,5 @@ fi
 
 #// wallpaper
 
-"${scrDir}/swwwallpaper.sh" -s "$(readlink "${hydeThemeDir}/wall.set")"
+"${scrDir}/swwwallpaper.sh" -s "$(readlink "${swirlfaceThemeDir}/wall.set")"
 

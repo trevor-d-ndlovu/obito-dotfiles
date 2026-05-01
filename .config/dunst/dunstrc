@@ -452,12 +452,12 @@
     background = "#82828280"
     foreground = "#FCFCFCE6"
     frame_color = "#82828203"
-    icon = "/home/obito/.config/dunst/icons/hyprdots.svg"
+    icon = "/home/obito/.config/dunst/icons/swirlface.svg"
     timeout = 5
 
 [urgency_normal]
     background = "#2B2B2B80"
     foreground = "#FCFCFCE6"
     frame_color = "#2B2B2B03"
-    icon = "/home/obito/.config/dunst/icons/hyprdots.svg"
+    icon = "/home/obito/.config/dunst/icons/swirlface.svg"
     timeout = 5

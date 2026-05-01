@@ -1,0 +1,6 @@
+    "custom/github_swirlface": {
+        "format": " ",
+        "rotate": ${r_deg},
+        "tooltip-format": "  Swirlface repository",
+        "on-click": "xdg-open https://github.com/trevor-d-ndlovu/obito-dotfiles",
+    },

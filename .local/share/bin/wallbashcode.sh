@@ -7,21 +7,25 @@ readarray -t codeConf < <(find "${confDir}" -mindepth 1 -maxdepth 1 -type d -nam
 readarray -t codeVsix < <(find "$HOME" -mindepth 1 -maxdepth 1 -type d -name ".vscode*" -o -name ".cursor" | sort)
 tmpFile="/tmp/$(id -u)$(basename ${0}).tmp"
 tgtFile="extensions/undefined_publisher.wallbash-0.0.1/themes/wallbash-color-theme.json"
+vsixFile="$HOME/.local/share/swirlface/arcs/Code_Wallbash.vsix"
 
 #// install  ext
 
 for i in "${!codeVsix[@]}" ;do
     if [ ! -f "${codeVsix[i]}/${tgtFile}" ] ; then
-        [ -f "${cacheDir}/landing/Code_Wallbash.vsix" ] || curl -L -o "${cacheDir}/landing/Code_Wallbash.vsix" https://github.com/prasanthrangan/hyprdots/raw/main/Source/arcs/Code_Wallbash.vsix
+        if [ ! -f "${vsixFile}" ] ; then
+            echo "[wallbashcode] Missing ${vsixFile}"
+            continue
+        fi
         case ${codeVsix[i]} in
         *".cursor"*)
             echo "[wallbashcode] Cursor IDE: Manual intervention required for extension installation."
             echo "[wallbashcode] Read the instructions here: https://www.cursor.com/how-to-install-extension "
             ;;
         *)
-            pkg_installed code-insiders && code-insiders --install-extension "${cacheDir}/landing/Code_Wallbash.vsix"
-            pkg_installed code && code --install-extension "${cacheDir}/landing/Code_Wallbash.vsix"
-            pkg_installed vscodium && vscodium --install-extension "${cacheDir}/landing/Code_Wallbash.vsix"
+            pkg_installed code-insiders && code-insiders --install-extension "${vsixFile}"
+            pkg_installed code && code --install-extension "${vsixFile}"
+            pkg_installed vscodium && vscodium --install-extension "${vsixFile}"
             ;;
         esac
     fi

@@ -5,6 +5,7 @@
 
 scrDir="$(dirname "$(realpath "$0")")"
 source "${scrDir}/globalcontrol.sh"
+spotifyThemeArchive="$HOME/.local/share/swirlface/arcs/Spotify_Sleek.tar.gz"
 
 
 # regen conf
@@ -12,7 +13,7 @@ source "${scrDir}/globalcontrol.sh"
 if pkg_installed spotify && pkg_installed spicetify-cli ; then
 
     if [ ! -w /opt/spotify ] || [ ! -w /opt/spotify/Apps ]; then
-        notify-send -a "Hyprdots" "Permission needed for Wallbash Spotify theme"
+        notify-send -a "Swirlface" "Permission needed for Wallbash Spotify theme"
         pkexec chmod a+wr /opt/spotify
         pkexec chmod a+wr /opt/spotify/Apps -R
     fi
@@ -25,8 +26,11 @@ if pkg_installed spotify && pkg_installed spicetify-cli ; then
         spotfy_flags='--ozone-platform=wayland'
         sed -i -e "/^prefs_path/ s+=.*$+= $HOME/.config/spotify/prefs+g" \
             -e "/^spotify_launch_flags/ s+=.*$+= $spotfy_flags+g" "$sptfyConf"
-	    curl -L -o ${cacheDir}/landing/Spotify_Sleek.tar.gz https://github.com/prasanthrangan/hyprdots/raw/main/Source/arcs/Spotify_Sleek.tar.gz
-        tar -xzf ${cacheDir}/landing/Spotify_Sleek.tar.gz -C ~/.config/spicetify/Themes/
+        if [ ! -f "${spotifyThemeArchive}" ]; then
+            notify-send -a "Swirlface" "Missing Spotify theme archive"
+            exit 1
+        fi
+        tar -xzf "${spotifyThemeArchive}" -C ~/.config/spicetify/Themes/
         spicetify backup apply
         spicetify config current_theme Sleek
         spicetify config color_scheme Wallbash
@@ -39,4 +43,3 @@ if pkg_installed spotify && pkg_installed spicetify-cli ; then
     fi
 
 fi
-

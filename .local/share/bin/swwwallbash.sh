@@ -21,10 +21,10 @@ fi
 
 set -a
 source "${wallbashOut}"
-if [ -f "${hydeThemeDir}/theme.dcol" ] && [ "${enableWallDcol}" -eq 0 ]  ; then
-    source "${hydeThemeDir}/theme.dcol"
-    echo "[theme] Overriding dominant colors from \"${hydeTheme}\""
-    echo "[note] Remove \"${hydeThemeDir}/theme.dcol\" to use wallpaper dominant colors"
+if [ -f "${swirlfaceThemeDir}/theme.dcol" ] && [ "${enableWallDcol}" -eq 0 ]  ; then
+    source "${swirlfaceThemeDir}/theme.dcol"
+    echo "[theme] Overriding dominant colors from \"${swirlfaceTheme}\""
+    echo "[note] Remove \"${swirlfaceThemeDir}/theme.dcol\" to use wallpaper dominant colors"
 fi
 [ "${dcol_mode}" == "dark" ] && dcol_invt="light" || dcol_invt="dark"
 set +a
@@ -34,8 +34,8 @@ set +a
 
 fn_wallbash () {
     local tplt="${1}"
-    [ -f "${hydeConfDir}/hyde.conf" ] && source "${hydeConfDir}/hyde.conf"
-    # Skips the the template declared in ./hyde.conf
+    [ -f "${swirlfaceConfDir}/swirlface.conf" ] && source "${swirlfaceConfDir}/swirlface.conf"
+    # Skips the the template declared in ./swirlface.conf
     [[ " ${skip_wallbash[@]} " =~ " ${tplt} " ]] && echo "[skip: template] ${tplt}" && return 0
     eval target="$(head -1 "${tplt}" | awk -F '|' '{print $1}')"
     [ ! -d "$(dirname "${target}")" ] && echo "[skip: no dir] \"${target}\"" && return 0
@@ -235,11 +235,11 @@ export -f fn_wallbash
 
 if [ "${enableWallDcol}" -eq 0 ] && [[ "${reload_flag}" -eq 1 ]] ; then
 
-    echo ":: deploying ${hydeTheme} colors :: ${dcol_mode} wallpaper detected"
-    mapfile -d '' -t deployList < <(find "${hydeThemeDir}" -type f -name "*.theme" -print0)
+    echo ":: deploying ${swirlfaceTheme} colors :: ${dcol_mode} wallpaper detected"
+    mapfile -d '' -t deployList < <(find "${swirlfaceThemeDir}" -type f -name "*.theme" -print0)
 
     while read -r pKey ; do
-        fKey="$(find "${hydeThemeDir}" -type f -name "$(basename "${pKey%.dcol}.theme")")"
+        fKey="$(find "${swirlfaceThemeDir}" -type f -name "$(basename "${pKey%.dcol}.theme")")"
         [ -z "${fKey}" ] && deployList+=("${pKey}")
     done < <(find "${wallbashDir}/Wall-Dcol" -type f -name "*.dcol")
 
@@ -254,8 +254,8 @@ fi
 
 #  Theme mode: detects the color-scheme set in hypr.theme and falls back if nothing is parsed.
 if [ "${enableWallDcol}" -eq 0 ]; then
-    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${hydeThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
-                    grep 'gsettings set org.gnome.desktop.interface color-scheme' "${hydeThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}')"
+    colorScheme="$({ grep -q "^[[:space:]]*\$COLOR-SCHEME\s*=" "${swirlfaceThemeDir}/hypr.theme" && grep "^[[:space:]]*\$COLOR-SCHEME\s*=" "${swirlfaceThemeDir}/hypr.theme" | cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' ;} || 
+                    grep 'gsettings set org.gnome.desktop.interface color-scheme' "${swirlfaceThemeDir}/hypr.theme" | awk -F "'" '{print $((NF - 1))}')"
     colorScheme=${colorScheme:-$(gsettings get org.gnome.desktop.interface color-scheme)} 
     # should be declared explicitly so we can easily debug
     grep -q "dark" <<< "${colorScheme}" && enableWallDcol=2

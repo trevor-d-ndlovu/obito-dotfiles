@@ -11,7 +11,7 @@ $ICON_THEME = Tela-circle-blue
 $COLOR_SCHEME = prefer-light
 
 # Optional: The varibles above will be set automatically when the theme is loaded
-# This exec commands are only for older versions of Hyprdots
+# This exec commands are only for older versions of Swirlface
 
 exec = gsettings set org.gnome.desktop.interface icon-theme $ICON_THEME
 exec = gsettings set org.gnome.desktop.interface gtk-theme $GTK_THEME

@@ -18,12 +18,13 @@ Personal shell, Git, tmux, Code - OSS, Hyprland, Waybar, and theme config.
 - `.config/Kvantum`
 - `.config/qt5ct`
 - `.config/qt6ct`
-- `.config/hyde`
+- `.config/swirlface`
 - `.config/wlogout`
 - `.config/swaylock`
 - `.config/fastfetch`
 - `.config/swappy`
 - `.local/share/bin`
+- `.local/share/swirlface`
 - `.themes`
 - `.icons`
 
@@ -59,4 +60,4 @@ The installer:
 ## Notes
 
 - The bootstrap installs the common dependencies, but a few hardware-specific packages may still need manual setup, especially GPU, Wi-Fi, Bluetooth, or laptop power-management packages.
-- The repo includes the full local icon collection and HyDE theme bundle, so cloning can take a while.
+- The repo includes the full local icon collection and Swirlface theme bundle, so cloning can take a while.

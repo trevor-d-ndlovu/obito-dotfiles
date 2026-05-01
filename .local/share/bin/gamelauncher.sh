@@ -50,7 +50,7 @@ fi
 fn_lutris() {
 [ ! -e "${icon_path}" ] && icon_path="${HOME}/.local/share/lutris/coverart"
 [ ! -e "${icon_path}" ] && icon_path="${HOME}/.cache/lutris/coverart"
-meta_data="/tmp/hyprdots-$(id -u)-lutrisgames.json"
+meta_data="/tmp/swirlface-$(id -u)-lutrisgames.json"
 
 # Retrieve the list of games from Lutris in JSON format
 #TODO Only call this if new apps are installed...

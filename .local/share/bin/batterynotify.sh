@@ -3,7 +3,7 @@
 undock=false
 scrDir=$(dirname "$(realpath "$0")")
 source $scrDir/globalcontrol.sh
-batterynotify_conf="${hydeConfDir}/hyde.conf" # Shared with hyde configuration
+batterynotify_conf="${swirlfaceConfDir}/swirlface.conf" # Shared with swirlface configuration
 config_info() {
 cat <<  EOF
 
@@ -101,9 +101,9 @@ case "$battery_status" in         # Handle the power supply status
                     fi
                     ;;
                     *)
-                    if [[ ! -f "/tmp/hyprdots.batterynotify.status.fallback.$battery_status-$$" ]]; then
-                    echo "Status: '==>> "$battery_status" <<==' Script on Fallback mode,Unknown power supply status.Please copy this line and raise an issue to the Github Repo.Also run 'ls /tmp/hyprdots.batterynotify' to see the list of lock files.*"
-                    touch "/tmp/hyprdots.batterynotify.status.fallback.$battery_status-$$"
+                    if [[ ! -f "/tmp/swirlface.batterynotify.status.fallback.$battery_status-$$" ]]; then
+                    echo "Status: '==>> "$battery_status" <<==' Script on Fallback mode,Unknown power supply status.Please copy this line and raise an issue to the Github Repo.Also run 'ls /tmp/swirlface.batterynotify' to see the list of lock files.*"
+                    touch "/tmp/swirlface.batterynotify.status.fallback.$battery_status-$$"
                     fi
                     fn_percentage
                     ;;
@@ -146,7 +146,7 @@ get_battery_info
 # resume_processes() { for pid in $pids ; do  if [ "$pid" -ne "$current_pid" ] ; then kill -CONT $pid ; notify-send -a "Battery Notify" -t 2000 -r 9889 -u "CRITICAL" "Debugging ENDED, Resuming Regular Process" ; fi ; done }
 
 main() { # Main function
-rm -fr /tmp/hyprdots.batterynotify* # Cleaning the lock file
+rm -fr /tmp/swirlface.batterynotify* # Cleaning the lock file
 battery_full_threshold=${battery_full_threshold:-100}
 battery_critical_threshold=${battery_critical_threshold:-5}
 unplug_charger_threshold=${unplug_charger_threshold:-80}

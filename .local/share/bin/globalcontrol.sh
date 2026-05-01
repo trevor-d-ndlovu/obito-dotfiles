@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 
-#// hyde envs
+#// swirlface envs
 
 export confDir="${XDG_CONFIG_HOME:-$HOME/.config}"
-export hydeConfDir="${confDir}/hyde"
-export cacheDir="$HOME/.cache/hyde"
+export swirlfaceConfDir="${confDir}/swirlface"
+export cacheDir="$HOME/.cache/swirlface"
 export thmbDir="${cacheDir}/thumbs"
 export dcolDir="${cacheDir}/dcols"
 export hashMech="sha1sum"
@@ -69,7 +69,7 @@ get_themes()
         [ -f "${thmDir}/.sort" ] && thmSortS+=("$(head -1 "${thmDir}/.sort")") || thmSortS+=("0")
         thmListS+=("$(basename "${thmDir}")")
         thmWallS+=("$(readlink "${thmDir}/wall.set")")
-    done < <(find "${hydeConfDir}/themes" -mindepth 1 -maxdepth 1 -type d)
+    done < <(find "${swirlfaceConfDir}/themes" -mindepth 1 -maxdepth 1 -type d)
 
     while IFS='|' read -r sort theme wall ; do
         thmSort+=("${sort}")
@@ -85,21 +85,21 @@ get_themes()
     fi
 }
 
-[ -f "${hydeConfDir}/hyde.conf" ] && source "${hydeConfDir}/hyde.conf"
+[ -f "${swirlfaceConfDir}/swirlface.conf" ] && source "${swirlfaceConfDir}/swirlface.conf"
 
 case "${enableWallDcol}" in
     0|1|2|3) ;;
     *) enableWallDcol=0 ;;
 esac
 
-if [ -z "${hydeTheme}" ] || [ ! -d "${hydeConfDir}/themes/${hydeTheme}" ] ; then
+if [ -z "${swirlfaceTheme}" ] || [ ! -d "${swirlfaceConfDir}/themes/${swirlfaceTheme}" ] ; then
     get_themes
-    hydeTheme="${thmList[0]}"
+    swirlfaceTheme="${thmList[0]}"
 fi
 
-export hydeTheme
-export hydeThemeDir="${hydeConfDir}/themes/${hydeTheme}"
-export wallbashDir="${hydeConfDir}/wallbash"
+export swirlfaceTheme
+export swirlfaceThemeDir="${swirlfaceConfDir}/themes/${swirlfaceTheme}"
+export wallbashDir="${swirlfaceConfDir}/wallbash"
 export enableWallDcol
 
 
@@ -142,12 +142,12 @@ set_conf()
 {
     local varName="${1}"
     local varData="${2}"
-    touch "${hydeConfDir}/hyde.conf"
+    touch "${swirlfaceConfDir}/swirlface.conf"
 
-    if [ $(grep -c "^${varName}=" "${hydeConfDir}/hyde.conf") -eq 1 ] ; then
-        sed -i "/^${varName}=/c${varName}=\"${varData}\"" "${hydeConfDir}/hyde.conf"
+    if [ $(grep -c "^${varName}=" "${swirlfaceConfDir}/swirlface.conf") -eq 1 ] ; then
+        sed -i "/^${varName}=/c${varName}=\"${varData}\"" "${swirlfaceConfDir}/swirlface.conf"
     else
-        echo "${varName}=\"${varData}\"" >> "${hydeConfDir}/hyde.conf"
+        echo "${varName}=\"${varData}\"" >> "${swirlfaceConfDir}/swirlface.conf"
     fi
 }
 

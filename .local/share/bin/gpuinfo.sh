@@ -2,7 +2,7 @@
 # shellcheck disable=SC2312
 # shellcheck disable=SC1090
 scrDir=`dirname "$(realpath "$0")"`
-gpuQ="/tmp/hyprdots-${UID}-gpuinfo-query"
+gpuQ="/tmp/swirlface-${UID}-gpuinfo-query"
 tired=false
 [[ " $* " =~ " tired " ]] && ! grep -q "tired" "${gpuQ}" && echo "tired=true" >>"${gpuQ}"
 [[ " $* " =~ " no_emoji " ]] && ! grep -q "NO_EMOJI" "${gpuQ}" && echo "NO_EMOJI=1" >>"${gpuQ}"

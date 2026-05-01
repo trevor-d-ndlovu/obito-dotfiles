@@ -7,8 +7,8 @@ scrDir=$(dirname "$(realpath "$0")")
 source "${scrDir}/globalcontrol.sh"
 scrName="$(basename "$0")"
 kmenuPath="$HOME/.local/share/kio/servicemenus"
-kmenuDesk="${kmenuPath}/hydewallpaper.desktop"
-tgtPath="$(dirname "${hydeThemeDir}")"
+kmenuDesk="${kmenuPath}/swirlfacewallpaper.desktop"
+tgtPath="$(dirname "${swirlfaceThemeDir}")"
 get_themes
 
 
