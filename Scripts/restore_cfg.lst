@@ -10,6 +10,8 @@ Y|Y|${HOME}/.config|.config/kitty|kitty
 Y|Y|${HOME}/.config|.config/dunst|dunst
 Y|Y|${HOME}/.config|.config/gtk-3.0|
 Y|Y|${HOME}/.config|.config/gtk-4.0|
+Y|Y|${HOME}/.config|.config/nwg-look|nwg-look
+Y|Y|${HOME}/.config|.config/xsettingsd|
 Y|Y|${HOME}/.config|.config/Kvantum|kvantum
 Y|Y|${HOME}/.config|.config/qt5ct|qt5ct
 Y|Y|${HOME}/.config|.config/qt6ct|qt6ct
